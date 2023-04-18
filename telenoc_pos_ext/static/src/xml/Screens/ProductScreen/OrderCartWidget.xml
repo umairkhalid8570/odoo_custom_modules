@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <!--Add items counter in the cart-->
+    <t t-name="OrderCartWidget" t-inherit="point_of_sale.OrderWidget" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[@class='order-container']//div[@class='order']//t[@t-else='']//OrderSummary"
+               position="replace">
+            <OrderSummary c_untaxed_amount="state.c_untaxed_amount" c_amount="state.c_amount"
+                          c_discount_amount="state.c_discount_amount" c_total_amount="state.c_total_amount"
+                          c_tax_amount="state.c_tax_amount" street_part="state.street_part"/>
+        </xpath>
+    </t>
+
+</templates>

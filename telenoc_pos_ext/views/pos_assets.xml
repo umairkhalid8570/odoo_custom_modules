@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="usc_assets" name="USC POS ASSETS" inherit_id="point_of_sale.assets_common">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/itelenoc_pos_ext/static/src/js/models.js"/>
+            <script type="text/javascript" src="/itelenoc_pos_ext/static/src/js/Screens/ProductScreen/OrderCartWidget.js"/>
+<!--            <script type="text/javascript" src="/itelenoc_pos_ext/static/src/js/Screens/ProductScreen/ProductScreen.js"/>-->
+        </xpath>
+    </template>
+
+</odoo>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <!--Add items counter in the cart-->
+    <t t-name="OrderCartSummary" t-inherit="point_of_sale.OrderSummary" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[@class='entry total']" position="replace">
+            <div class="entry total">
+                <div>
+                    <span class="badge">UnTaxed Amount: </span>
+                    <span class="value">
+                        <t t-esc="props.c_untaxed_amount" />
+                    </span>
+                </div>
+                <div>
+                    <span class="badge">Tax Amount: </span>
+                    <span class="value">
+                        <t t-esc="props.c_tax_amount" />
+                    </span>
+                </div>
+
+                <div>
+                    <span class="badge">Amount: </span>
+                    <span class="value">
+                        <t t-esc="props.c_amount" />
+                    </span>
+                </div>
+                <div>
+                    <span class="badge">Discount: </span>
+                    <span class="value">
+                        <t t-esc="props.c_discount_amount" />
+                    </span>
+                </div>
+                <span class="badge">Total: </span>
+                <span class="value">
+                    <t t-esc="props.c_total_amount" />
+                </span>
+
+            </div>
+        </xpath>
+    </t>
+
+</templates>

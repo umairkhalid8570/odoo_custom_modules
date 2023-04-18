@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <record id="view_odoocms_application_form_nutech" model="ir.ui.view">
+        <field name="name">odoocms.application.form</field>
+        <field name="model">odoocms.application</field>
+        <field name="inherit_id" ref="odoocms_admission.view_odoocms_application_form"/>
+        <field name="arch" type="xml">
+             <page name="test_center" position="attributes">
+                 <attribute name="attrs">{'invisible':[('degree_code','=','DAECIVIL')]}</attribute>
+             </page>
+            <page name="test_center" position="after">
+                <field name="degree_code" invisible="1"/>
+                    <page name="test_center_two" string="Test Center" attrs="{'invisible':[('degree_code','!=','DAECIVIL')]}">
+                         <group>
+                                <group>
+                                    <field name="center_id"/>
+                                    <field name="slot_id"/>
+                                    <field name="paper_name"/>
+                                    <field name="confirm_test_center"/>
+                                </group>
+                                <group>
+                                    <field name="center_id2"/>
+                                    <field name="slot_id2"/>
+                                    <field name="paper_name2"/>
+                                    <field name="confirm_test_center2"/>
+                            </group>
+                         </group>
+                    </page>
+            </page>
+        </field>
+  </record>
+</odoo>

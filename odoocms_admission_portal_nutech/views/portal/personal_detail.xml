@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="personal_detail_nfc" name="Admission Personal Detail"
+              inherit_id="odoocms_admission_portal.admission_personal_detail">
+        <xpath expr="//div[@id='last_degree']" position="after">
+            <div class="section colm colm4" id="last_degree">
+                <label for="merit_type">Apply on</label>
+                <label class="field select">
+                    <select name="merit_type" id="merit_type" required="True">
+                        <option value="merit" t-att-selected="student.merit_type == 'merit'"
+                            t-att-disabled="readonly and student.merit_type != 'merit'">Merit List
+                        </option>
+                        <option value="preference" t-att-selected="student.merit_type == 'preference'"
+                            t-att-disabled="readonly and student.merit_type != 'preference'">Preference Based Merit
+                        </option>
+                    </select>
+                    <i class="arrow double"/>
+                </label>
+            </div>
+             <div class="section colm colm4">
+                        <label for="hostel_required"/>
+                        <label class="field select">
+                            <input class="checkbox" name="hostel_required" type="checkbox" id="hostel_required"
+                                   t-att-checked="student.app_hostal_required"
+                                   t-att-disabled="readonly"/>
+                            Hostel Required ?
+                        </label>
+                    </div>
+        </xpath>
+<!--        <xpath expr="//div[@id='domicile_div']" position="after">-->
+<!--            <div class="section colm colm3">-->
+<!--                <label for="your_name">Distance from University(KM)*</label>-->
+<!--                <label class="field prepend-icon">-->
+<!--                    <input type="number" name="distance_university" id="distance_university" class="gui-input"-->
+<!--                           onkeydown="return alphaOnly(event);" placeholder="Distance from University in KM"-->
+<!--                           t-att-value="student.distance_university" required="true"-->
+<!--                           t-att-readonly="readonly"/>-->
+<!--                    <span class="field-icon">-->
+<!--                        <i class=""/>-->
+<!--                    </span>-->
+<!--                </label>-->
+<!--            </div>-->
+<!--        </xpath>-->
+    </template>
+</odoo>

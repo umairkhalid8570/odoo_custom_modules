@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="program_choices_oum" name="Admission Program Choices"
+              inherit_id="odoocms_admission_portal.admission_programs">
+        <xpath expr="//div[@id='discipline']" position="after">
+            <div class="frm-row">
+                <small style="color:red; font:bold;">Every 3 preferences PKR 2000 will be added in fee.</small>
+            </div>
+        </xpath>
+
+    </template>
+</odoo>

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="education_top_detail_nfc" name="Education Top Details"
+              inherit_id="odoocms_admission_portal.education_top_detail">
+
+        <!-- Matric -->
+        <xpath expr="//div[@id='div_matric_total_marks']" position="before">
+            <div class="section colm colm3" id="div_matric_roll_number">
+                <label for="university">Roll Number</label>
+                <label class="field prepend-icon">
+                    <input min="1" type="number"
+                           name="matricrollnumber" id="matricrollnumber"
+                           placeholder="Roll Number" class="gui-input"
+                           t-att-value="matric_education and matric_education[0].roll_number or ''"
+                           required="true" t-att-readonly="readonly"/>
+                    <span class="field-icon"><i class="fa fa-credit-card"/></span>
+                </label>
+            </div>
+        </xpath>
+        <xpath expr="//div[@id='div_matric_total_marks']" position="attributes">
+            <attribute name="class">section colm colm3</attribute>
+        </xpath>
+        <xpath expr="//div[@id='div_matric_obtained_marks']" position="attributes">
+            <attribute name="class">section colm colm3</attribute>
+        </xpath>
+        <xpath expr="//div[@id='div_matric_percentage']" position="attributes">
+            <attribute name="class">section colm colm3</attribute>
+        </xpath>
+
+        <!-- Olevel -->
+        <xpath expr="//div[@id='div_olevel_total_marks']" position="before">
+            <div class="section colm colm3" id="div_olevel_roll_number">
+                <label for="university">Roll Number</label>
+                <label class="field prepend-icon">
+                    <input min="1" type="number"
+                           name="olevelrollnumber" id="olevelrollnumber"
+                           placeholder="Roll Number" class="gui-input"
+                           t-att-value="matric_education and matric_education[0].roll_number or ''"
+                           required="true" t-att-readonly="readonly"/>
+                    <span class="field-icon"><i class="fa fa-credit-card"/></span>
+                </label>
+            </div>
+        </xpath>
+        <xpath expr="//div[@id='div_olevel_total_marks']" position="attributes">
+            <attribute name="class">section colm colm3</attribute>
+        </xpath>
+        <xpath expr="//div[@id='div_olevel_obtained_marks']" position="attributes">
+            <attribute name="class">section colm colm3</attribute>
+        </xpath>
+        <xpath expr="//div[@id='div_olevel_percentage']" position="attributes">
+            <attribute name="class">section colm colm3</attribute>
+        </xpath>
+
+    </template>
+
+    <template id="admission_education_detail_nfc" name="Admission Education Detail"
+              inherit_id="odoocms_admission_portal.admission_education_detail">
+
+        <!-- Inter -->
+        <xpath expr="//div[@id='div_inter_total_marks']" position="before">
+            <div class="section colm colm3" id="div_inter_roll_number">
+                <label for="university">Roll Number</label>
+                <label class="field prepend-icon">
+                    <input min="1" type="number"
+                           name="interrollnumber" id="interrollnumber"
+                           placeholder="Roll Number" class="gui-input"
+                           t-att-value="inter_education and inter_education[0].roll_number or ''"
+                           t-att-required="inter_education and inter_education[0].inter_result_status == 'Complete'"
+                           t-att-readonly="readonly"/>
+                    <span class="field-icon"><i class="fa fa-credit-card"/></span>
+                </label>
+            </div>
+        </xpath>
+        <xpath expr="//div[@id='div_inter_total_marks']" position="attributes">
+            <attribute name="class">section colm colm3</attribute>
+        </xpath>
+        <xpath expr="//div[@id='div_inter_obtained_marks']" position="attributes">
+            <attribute name="class">section colm colm3</attribute>
+        </xpath>
+        <xpath expr="//div[@id='div_inter_percentage']" position="attributes">
+            <attribute name="class">section colm colm3</attribute>
+        </xpath>
+
+        <!-- A Level -->
+        <xpath expr="//div[@id='div_alevel_total_marks']" position="before">
+            <div class="section colm colm3" id="div_alevel_roll_number">
+                <label for="university">Roll Number</label>
+                <label class="field prepend-icon">
+                    <input min="1" type="number"
+                           name="alevelrollnumber" id="alevelrollnumber"
+                           placeholder="Roll Number" class="gui-input"
+                           t-att-value="inter_education and inter_education[0].roll_number or ''"
+                           t-att-required="inter_education and inter_education[0].inter_result_status == 'Complete'"
+                           t-att-readonly="readonly"/>
+                    <span class="field-icon"><i class="fa fa-credit-card"/></span>
+                </label>
+            </div>
+        </xpath>
+        <xpath expr="//div[@id='div_alevel_total_marks']" position="attributes">
+            <attribute name="class">section colm colm3</attribute>
+        </xpath>
+        <xpath expr="//div[@id='div_alevel_obtained_marks']" position="attributes">
+            <attribute name="class">section colm colm3</attribute>
+        </xpath>
+        <xpath expr="//div[@id='div_alevel_percentage']" position="attributes">
+            <attribute name="class">section colm colm3</attribute>
+        </xpath>
+
+        <!-- DAE 1 Year -->
+        <xpath expr="//div[@id='div_dae_1y_total_marks']" position="before">
+            <div class="section colm colm3" id="div_dae_1y_roll_number">
+                <label for="university">Roll Number</label>
+                <label class="field prepend-icon">
+                    <input min="1" type="number"
+                           name="dae1yrollnumber" id="dae1yrollnumber"
+                           placeholder="Roll Number" class="gui-input"
+                           t-att-value="inter_education and inter_education[0].dae_first_year_roll_number or ''"
+                           t-att-required="true"
+                           t-att-readonly="readonly"/>
+                    <span class="field-icon"><i class="fa fa-credit-card"/></span>
+                </label>
+            </div>
+        </xpath>
+        <xpath expr="//div[@id='div_dae_1y_total_marks']" position="attributes">
+            <attribute name="class">section colm colm3</attribute>
+        </xpath>
+        <xpath expr="//div[@id='div_dae_1y_obtained_marks']" position="attributes">
+            <attribute name="class">section colm colm3</attribute>
+        </xpath>
+        <xpath expr="//div[@id='div_dae_1y_percentage']" position="attributes">
+            <attribute name="class">section colm colm3</attribute>
+        </xpath>
+
+        <!-- DAE 2 Year -->
+        <xpath expr="//div[@id='div_dae_2y_total_marks']" position="before">
+            <div class="section colm colm3" id="div_dae_2y_roll_number">
+                <label for="university">Roll Number</label>
+                <label class="field prepend-icon">
+                    <input min="1" type="number"
+                           name="dae2yrollnumber" id="dae2yrollnumber"
+                           placeholder="Roll Number" class="gui-input"
+                           t-att-value="inter_education and inter_education[0].dae_sec_year_roll_number or ''"
+                           t-att-required="true"
+                           t-att-readonly="readonly"/>
+                    <span class="field-icon"><i class="fa fa-credit-card"/></span>
+                </label>
+            </div>
+        </xpath>
+        <xpath expr="//div[@id='div_dae_2y_total_marks']" position="attributes">
+            <attribute name="class">section colm colm3</attribute>
+        </xpath>
+        <xpath expr="//div[@id='div_dae_2y_obtained_marks']" position="attributes">
+            <attribute name="class">section colm colm3</attribute>
+        </xpath>
+        <xpath expr="//div[@id='div_dae_2y_percentage']" position="attributes">
+            <attribute name="class">section colm colm3</attribute>
+        </xpath>
+
+        <!-- DAE 3 Year -->
+        <xpath expr="//div[@id='div_dae_3y_total_marks']" position="before">
+            <div class="section colm colm3" id="div_dae_3y_roll_number">
+                <label for="university">Roll Number</label>
+                <label class="field prepend-icon">
+                    <input min="1" type="number"
+                           name="dae3yrollnumber" id="dae3yrollnumber"
+                           placeholder="Roll Number" class="gui-input"
+                           t-att-value="inter_education and inter_education[0].dae_third_year_roll_number or ''"
+                           t-att-required="true"
+                           t-att-readonly="readonly"/>
+                    <span class="field-icon"><i class="fa fa-credit-card"/></span>
+                </label>
+            </div>
+        </xpath>
+        <xpath expr="//div[@id='div_dae_3y_total_marks']" position="attributes">
+            <attribute name="class">section colm colm3</attribute>
+        </xpath>
+        <xpath expr="//div[@id='div_dae_3y_obtained_marks']" position="attributes">
+            <attribute name="class">section colm colm3</attribute>
+        </xpath>
+        <xpath expr="//div[@id='div_dae_3y_percentage']" position="attributes">
+            <attribute name="class">section colm colm3</attribute>
+        </xpath>
+
+    </template>
+</odoo>
