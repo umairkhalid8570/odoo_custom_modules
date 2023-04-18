@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <act_window name="Make Bill"
+                id="create_trip_expense_bill"
+                src_model="tms.trip.expense"
+                res_model="account.invoice"
+                groups="tms_base.group_tms_accountant"
+                view_mode="form"
+                target="current"
+                context="{'from_expense': '1','default_type': 'in_invoice', 'type': 'in_invoice', 'journal_type': 'purchase'}"
+                key2="client_action_multi"/>
+
+    <act_window name="Make Bill"
+                id="create_fuel_bill"
+                src_model="tms.trip.fuel.log"
+                res_model="account.invoice"
+                groups="tms_base.group_tms_accountant"
+                view_mode="form"
+                target="current"
+                 context="{'from_expense': '1','default_type': 'in_invoice', 'type': 'in_invoice', 'journal_type': 'purchase'}"
+                key2="client_action_multi"/>
+
+        <act_window name="Make Bill"
+                id="create_expense_bill"
+                src_model="tms.expense"
+                res_model="account.invoice"
+                groups="tms_base.group_tms_accountant"
+                view_mode="form"
+                target="current"
+                 context="{'from_expense': '1','default_type': 'in_invoice', 'type': 'in_invoice', 'journal_type': 'purchase'}"
+                key2="client_action_multi"/>
+
+    <record model="ir.ui.view" id="invoice_supplier_form">
+        <field name="name">tms_expenses.invoice.supplier.form</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.invoice_supplier_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Expenses">
+                <group>
+                    <!--probably fully invisible-->
+                    <!--<field name="exp_model_selector" groups="base.group_no_one"/>-->
+                <field string="Expenses" name="expense_ids" domain="[('invoice_ids','=',False),('vendor_id.id','=',partner_id), ('date', '&lt;=', date_invoice)]" create="0" edit="0"
+                       groups="base.group_no_one">
+                    <tree >
+                        <field name="state" invisible="1" />
+                        <field name="date" />
+                        <field name="cost_type" />
+                        <field name="product_id" />
+                        <field name="amount" widget="monetary"/>
+                        <field name="currency_id" />
+                    </tree>
+                    </field>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="tms_trip_expense_filter">
+        <field name="name">tms.trip.expense.filter.inh</field>
+        <field name="model">tms.trip.expense</field>
+        <field name="groups_id" eval="[(4, ref('tms_base.group_tms_accountant'))]"/>
+        <field name="inherit_id" ref="tms_base.tms_trip_expenses_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search">
+                <field name="invoice_ids" />
+                <filter domain="[('invoice_ids', '=', False)]"
+                        string="Not Invoiced" name="not_in_invoice"/>
+                <separator />
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="tms_trip_expense_tree">
+        <field name="name">tms.trip.expense.tree.inh</field>
+        <field name="model">tms.trip.expense</field>
+        <field name="groups_id" eval="[(4, ref('tms_base.group_tms_accountant'))]"/>
+        <field name="inherit_id" ref="tms_base.view_trip_expenses_tree_view"/>
+        <field name="arch" type="xml">
+            <field name="amount" postition="after">
+                <field name="invoice_ids" widget="many2many_tags"/>
+            </field>
+        </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="tms_fuel_log_filter">
+        <field name="name">tms.fuel.log.filter.inh</field>
+        <field name="model">tms.trip.fuel.log</field>
+        <field name="groups_id" eval="[(4, ref('tms_base.group_tms_accountant'))]"/>
+        <field name="inherit_id" ref="tms_base.tms_trip_fuel_log_view_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search">
+                <field name="invoice_ids" />
+                <filter domain="[('invoice_ids', '=', False)]"
+                        string="Not Invoiced" name="not_in_invoice"/>
+                <separator />
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="tms_fuel_log_tree">
+        <field name="name">tms.fuel.expense.tree.inh</field>
+        <field name="model">tms.trip.fuel.log</field>
+        <field name="groups_id" eval="[(4, ref('tms_base.group_tms_accountant'))]"/>
+        <field name="inherit_id" ref="tms_base.tms_trip_fuel_log_view_tree"/>
+        <field name="arch" type="xml">
+            <field name="amount" postition="after">
+                <field name="invoice_ids" widget="many2many_tags"/>
+            </field>
+        </field>
+    </record>
+
+    <!--Common Version-->
+
+    <record model="ir.ui.view" id="tms_expense_filter">
+        <field name="name">tms.expense.filter.inh</field>
+        <field name="model">tms.expense</field>
+        <field name="groups_id" eval="[(4, ref('tms_base.group_tms_accountant'))]"/>
+        <field name="inherit_id" ref="tms_base.tms_expense_search_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search">
+                <field name="invoice_ids" />
+                <filter domain="[('invoice_ids', '=', False)]"
+                        string="Not Invoiced" name="not_in_invoice"/>
+                <separator />
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="tms_expense_tree">
+        <field name="name">tms.expense.tree.inh</field>
+        <field name="model">tms.expense</field>
+        <field name="groups_id" eval="[(4, ref('tms_base.group_tms_accountant'))]"/>
+        <field name="inherit_id" ref="tms_base.tms_expense_tree_view"/>
+        <field name="arch" type="xml">
+            <field name="amount" postition="after">
+                <field name="invoice_ids" widget="many2many_tags"/>
+            </field>
+        </field>
+    </record>
+
+    <record id='tms_fleet_service_view_form' model='ir.ui.view'>
+        <field name="name">tms.expense.fleet_service.form</field>
+        <field name="model">tms.expense.fleet_service</field>
+        <field name="inherit_id" ref="tms_base.tms_fleet_service_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button
+                        type="object"
+                        class="btn-primary"
+                        string="Make/View Bill"
+                        name="onclick_create_invoice_expense"
+                        attrs="{'invisible': [('state', 'not in', ['approved', 'done'])]}"
+                />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

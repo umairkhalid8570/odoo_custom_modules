@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="accounting_form_1099_form_view" model="ir.ui.view">
+        <field name="name">accounting.form.1099.form.view</field>
+        <field name="model">accounting.form.1099</field>
+        <field name="arch" type="xml">
+            <form>
+<header>
+                        <button name="generate_lines" string="Generate Lines" type="object"/>
+                    </header>
+                <sheet>
+
+                    <group>
+                        <group>
+                            <field name="form_based" required="1"/>
+                            <field name="driver_id" attrs="{'invisible': [('form_based', '!=', 'driver')]}"/>
+                            <field name="vehicle_id" attrs="{'invisible': [('form_based', '!=', 'vehicle')]}"/>
+                            <field name="contract_id" attrs="{'invisible': [('form_based', '!=', 'contract')]}"/>
+                            <field name="partner_id" attrs="{'invisible': [('form_based', '!=', 'partner')]}"/>
+                            <field name="division_id" string="Division"/>
+                            <field name="partner_filter_id" attrs="{'invisible': [('form_based', '=', 'partner')]}"/>
+                            <field name="total_amount"/>
+
+                        </group>
+                        <group>
+                            <field name="year"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Lines">
+                            <field name="line_ids">
+                                <tree>
+                                    <field name="invoice_line_id"/>
+                                    <field name="currency_id" invisible="1"/>
+                                    <field name="amount"/>
+                                    <field name="product_id"/>
+                                    <field name="x_statement_date"/>
+
+                                </tree>
+                            </field>
+                            <group class="oe_subtotal_footer oe_right">
+                                    <field name="total_amount"/>
+                                    </group>
+                        </page>
+                        <page string="Settlement Item">
+                            <field name="sett_items_line_ids">
+                                <tree>
+                                    <field name="invoice_line_id"/>
+                                    <field name="currency_id" invisible="1"/>
+                                    <field name="amount"/>
+                                    <field name="product_id"/>
+                                    <field name="x_statement_date"/>
+                                </tree>
+                            </field>
+                             <group class="oe_subtotal_footer oe_right">
+                                    <field name="sett_total_amount"/>
+                                    </group>
+                        </page>
+                        <page string="Credits">
+                            <field name="award_line_ids">
+                                <tree>
+                                    <field name="invoice_line_id"/>
+                                    <field name="currency_id" invisible="1"/>
+                                    <field name="amount"/>
+                                    <field name="product_id"/>
+                                    <field name="x_statement_date"/>
+                                </tree>
+                            </field>
+                             <group class="oe_subtotal_footer oe_right">
+                                    <field name="award_total_amount"/>
+                                    </group>
+                        </page>
+                        <page string="Deduction">
+                            <field name="deduction_line_ids">
+                                <tree>
+                                    <field name="invoice_line_id"/>
+                                    <field name="currency_id" invisible="1"/>
+                                    <field name="amount"/>
+                                    <field name="product_id"/>
+                                    <field name="x_statement_date"/>
+                                </tree>
+                            </field>
+                             <group class="oe_subtotal_footer oe_right">
+                                    <field name="ded_total_amount"/>
+                                    </group>
+                        </page>
+                        <page string="Scheduled Deduction">
+                            <field name="sch_deduction_line_ids">
+                                <tree>
+                                    <field name="invoice_line_id"/>
+                                    <field name="currency_id" invisible="1"/>
+                                    <field name="amount"/>
+                                    <field name="product_id"/>
+                                    <field name="x_statement_date"/>
+                                </tree>
+                            </field>
+                             <group class="oe_subtotal_footer oe_right">
+                                    <field name="sch_total_amount"/>
+                                    </group>
+                        </page>
+                        <page string="Fuel">
+                            <field name="fuel_line_ids">
+                                <tree>
+                                    <field name="invoice_line_id"/>
+                                    <field name="currency_id" invisible="1"/>
+                                    <field name="amount"/>
+                                    <field name="product_id"/>
+                                    <field name="x_statement_date"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+
+                    <notebook>
+                        <page string="Removed Lines">
+                            <field name="rm_line_ids">
+                                <tree>
+                                    <field name="invoice_line_id"/>
+                                    <field name="currency_id" invisible="1"/>
+                                    <field name="amount"/>
+                                    <field name="product_id"/>
+                                    <button name="reverse_entry" string="Reverse Entry" type="object"/>
+                                </tree>
+                            </field>
+
+                        </page>
+                        <page string="Settlement Item">
+                            <field name="rm_sett_items_line_ids">
+                                <tree>
+                                    <field name="invoice_line_id"/>
+                                    <field name="currency_id" invisible="1"/>
+                                    <field name="amount"/>
+                                    <field name="product_id"/>
+                                    <button name="reverse_entry" string="Reverse Entry" type="object"/>
+                                </tree>
+                            </field>
+
+                        </page>
+                        <page string="Credits">
+                            <field name="rm_award_line_ids">
+                                <tree>
+                                    <field name="invoice_line_id"/>
+                                    <field name="currency_id" invisible="1"/>
+                                    <field name="amount"/>
+                                    <field name="product_id"/>
+                                    <button name="reverse_entry" string="Reverse Entry" type="object"/>
+                                </tree>
+                            </field>
+
+                        </page>
+                        <page string="Deduction">
+                            <field name="rm_deduction_line_ids">
+                                <tree>
+                                    <field name="invoice_line_id"/>
+                                    <field name="currency_id" invisible="1"/>
+                                    <field name="amount"/>
+                                    <field name="product_id"/>
+                                    <button name="reverse_entry" string="Reverse Entry" type="object"/>
+                                </tree>
+                            </field>
+
+                        </page>
+                        <page string="Scheduled Deduction">
+                            <field name="rm_sch_deduction_line_ids">
+                                <tree>
+                                    <field name="invoice_line_id"/>
+                                    <field name="currency_id" invisible="1"/>
+                                    <field name="amount"/>
+                                    <field name="product_id"/>
+                                    <button name="reverse_entry" string="Reverse Entry" type="object"/>
+                                </tree>
+                            </field>
+
+                        </page>
+                        <page string="Fuel">
+                            <field name="rm_fuel_line_ids">
+                                <tree>
+                                    <field name="invoice_line_id"/>
+                                    <field name="currency_id" invisible="1"/>
+                                    <field name="amount"/>
+                                    <field name="product_id"/>
+                                    <button name="reverse_entry" string="Reverse Entry" type="object"/>
+                                </tree>
+                            </field>
+
+                        </page>
+                    </notebook>
+
+                </sheet>
+            </form>
+
+        </field>
+    </record>
+
+    <record id="accounting_form_1099_tree_view" model="ir.ui.view">
+        <field name="name">accounting.form.1099.tree.view</field>
+        <field name="model">accounting.form.1099</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="form_based"/>
+                <field name="driver_id"/>
+                <field name="vehicle_id"/>
+                <field name="year"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="accounting_form_1099_view_action">
+        <field name="name">Form 1099</field>
+        <field name="res_model">accounting.form.1099</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem action="accounting_form_1099_view_action" id="menu_accounting_form_1099"
+              name="Form 1099" parent="tms_base.tms_configuration"
+    />
+
+</odoo>

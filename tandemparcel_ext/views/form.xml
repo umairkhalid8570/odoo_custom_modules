@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="tmp_nova_form" name="Partner Form">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure oe_empty">
+      <section class="s_tabs pt48 pb48 o_colored_level" data-vcss="001" data-snippet="s_tabs" data-name="Tabs" style="background-image: none;">
+        <div class="container">
+          <div class="s_tabs_main">
+            <div class="s_tabs_nav mb-3">
+              <ul class="nav nav-pills" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" id="nav_tabs_link_1662991616498_22" data-toggle="tab" href="#nav_tabs_content_1662991616498_22" role="tab" aria-controls="nav_tabs_content_1662991616498_22" aria-selected="true">ukraine</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link o_default_snippet_text" id="nav_tabs_link_1662991616499_23" data-toggle="tab" href="#nav_tabs_content_1662991616499_23" role="tab" aria-controls="nav_tabs_content_1662991616499_23" aria-selected="false">Profile</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link o_default_snippet_text" id="nav_tabs_link_1662991616499_24" data-toggle="tab" href="#nav_tabs_content_1662991616499_24" role="tab" aria-controls="nav_tabs_content_1662991616499_24" aria-selected="false">Contact</a>
+                </li>
+              </ul>
+            </div>
+            <div class="s_tabs_content tab-content">
+              <div class="tab-pane fade show active" id="nav_tabs_content_1662991616498_22" role="tabpanel" aria-labelledby="nav_tabs_link_1662991616498_22">
+                <div class="oe_structure oe_empty">
+                  <section class="s_website_form pt16 pb16" data-vcss="001" data-snippet="s_website_form" data-name="Form" style="background-image: none;">
+                    <div class="container">
+                     <form action="/ukraine/form/submit" method="post">
+                            <div class="form-row" style="margin-top: 2%;">
+                                <div class="col">
+                                    <label class="s_website_form_label " style="width: 200px" for="o224uzzgh0qn">
+                              <span class="s_website_form_label_content">Sender Phone Number</span>
+                              <span class="s_website_form_mark"> *</span>
+                            </label>
+                                    <input type="text" class="form-control" name='sender_name' id='sender_name' placeholder=""/>
+                                </div>
+                                <div class="col">
+                                    <label class="s_website_form_label " style="width: 200px" for="o224uzzgh0qn">
+                              <span class="s_website_form_label_content">Sender Phone Number</span>
+                              <span class="s_website_form_mark"> *</span>
+                            </label>
+                                    <input type="text" class="form-control" name='sender_phone' id='sender_phone' placeholder=""/>
+                                </div>
+                            </div>
+                            <div class="form-row" style="margin-top: 2%;">
+                                <div class="col">
+                                    <label class="s_website_form_label " style="width: 200px" for="o224uzzgh0qn">
+                              <span class="s_website_form_label_content">Sender Email</span>
+                              <span class="s_website_form_mark"> *</span>
+                            </label>
+                                    <input type="email" class="form-control" name="email"
+                                           id="email" required="true" />
+                                </div>
+                                <div class="col">
+                                    <label class="s_website_form_label " style="width: 200px" for="o224uzzgh0qn">
+                              <span class="s_website_form_label_content">Sending From</span>
+                              <span class="s_website_form_mark"> *</span>
+                            </label>
+                                    <input type="text" class="form-control" name='sending_from' id='sending_from'/>
+                                </div>
+                            </div>
+                            <div class="form-row" style="margin-top: 2%;">
+                                <div class="col">
+                                    <label class="s_website_form_label " style="width: 200px" for="o224uzzgh0qn">
+                              <span class="s_website_form_label_content">Sending To</span>
+                              <span class="s_website_form_mark"> *</span>
+                            </label>
+                                    <input list="sending_to_list" id="sending_to" name="sending_to" class="form-control" title="Sending to" required="True"/>
+                                    <datalist id="sending_to_list">
+                                    <t t-foreach="warehouse_list" t-as="single_term">
+
+                                                    <option t-att-value="single_term.warehouse_name"/>
+
+                                                </t>
+                                    </datalist>
+
+                                </div>
+
+                            </div>
+                            <div class="form-row" style="margin-top: 2%;">
+                                <div class="col">
+                                    <label class="s_website_form_label " style="width: 200px" for="o224uzzgh0qn">
+                              <span class="s_website_form_label_content">Receiver Full Name</span>
+                              <span class="s_website_form_mark"> *</span>
+                            </label>
+                                    <input type="text" class="form-control" name='receiver_name' id='receiver_name'/>
+                                </div>
+                                <div class="col">
+                                    <label class="s_website_form_label " style="width: 200px" for="o224uzzgh0qn">
+                              <span class="s_website_form_label_content">Receiver Phone Number</span>
+                              <span class="s_website_form_mark"> *</span>
+                            </label>
+                                    <input type="text" class="form-control" name='receiver_phone' id='receiver_name'/>
+                                </div>
+                            </div>
+                            <div class="form-row" style="margin-top: 2%;">
+                                <div class="col">
+                                    <label class="s_website_form_label " style="width: 200px" for="o224uzzgh0qn">
+                              <span class="s_website_form_label_content">Receiver Email</span>
+                              <span class="s_website_form_mark"> *</span>
+                            </label>
+                                    <input type="email" class="form-control" name="receiver_email"
+                                           id="receiver_email" required="true"/>
+                                </div>
+                            </div>
+                            <div class="form-row" style="margin-top: 2%;">
+                                <div class="col">
+                                    <label class="s_website_form_label " style="width: 200px" for="o224uzzgh0qn">
+                              <span class="s_website_form_label_content">Freight Description</span>
+                              <span class="s_website_form_mark"> *</span>
+                            </label>
+                                    <input type="text" class="form-control" name='freight_description' id='freight_description'/>
+                                </div>
+                            </div>
+                            <div class="form-row" style="margin-top: 2%;">
+                                <div class="col">
+                                      <label class="s_website_form_label " style="width: 200px" for="o224uzzgh0qn">
+                              <span class="s_website_form_label_content">Box Lenght (cm)</span>
+                              <span class="s_website_form_mark"> *</span>
+                            </label>
+                                    <input type="number" class="form-control" name='box_len' id='box_len'/>
+                                </div>
+                                <div class="col">
+                                      <label class="s_website_form_label " style="width: 200px" for="o224uzzgh0qn">
+                              <span class="s_website_form_label_content">Box Width (cm)</span>
+                              <span class="s_website_form_mark"> *</span>
+                            </label>
+                                    <input type="number" class="form-control" name='box_width' id='box_width'/>
+                                </div>
+                                <div class="col">
+                                      <label class="s_website_form_label " style="width: 200px" for="o224uzzgh0qn">
+                              <span class="s_website_form_label_content">Box Hight (cm)</span>
+                              <span class="s_website_form_mark"> *</span>
+                            </label>
+                                    <input type="number" class="form-control" name='box_height' id='box_height'/>
+                                </div>
+                                <div class="col">
+                                      <label class="s_website_form_label " style="width: 200px" for="o224uzzgh0qn">
+                              <span class="s_website_form_label_content">Box Weight (kg)</span>
+                              <span class="s_website_form_mark"> *</span>
+                            </label>
+                                    <input type="number" class="form-control" name='box_weight' id='box_weight'/>
+                                </div>
+                            </div>
+
+                            <div class="form-row" style="margin-top: 2%;">
+                                <div class="col">
+                                    <button type="submit" class="btn btn-primary">Create Shipment Label</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                  </section>
+                  <section class="s_website_form pt16 pb16" data-vcss="001" data-snippet="s_website_form" data-name="Form" style="background-image: none;">
+                    <div class="container">
+            &amp;nbsp; &amp;nbsp; 1&amp;nbsp; &amp;nbsp;&amp;nbsp;<form action="/website/form/" method="post" enctype="multipart/form-data" class="o_mark_required" data-mark="*" data-pre-fill="true" data-success-mode="redirect" data-success-page="/nova/form/submit" data-model_name="mail.mail"><div class="s_website_form_rows row s_col_no_bgcolor"><div class="form-group s_website_form_field col-12    s_website_form_dnone" data-name="Field"><div class="row s_col_no_resize s_col_no_bgcolor"><label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px"><span class="s_website_form_label_content"/></label><div class="col-sm"><input type="hidden" class="form-control s_website_form_input" name="email_to" value="info@yourcompany.example.com"/><div class="s_website_form_field_description small form-text text-muted">
+            Separate email addresses with a comma.
+        </div></div></div></div><div class="form-group s_website_form_field col-12 s_website_form_custom s_website_form_required" data-type="char" data-name="Field" data-visibility-condition="" data-visibility-between=""><div class="row s_col_no_resize s_col_no_bgcolor"><label class="col-form-label col-sm-auto s_website_form_label " style="width: 200px" for="oi8lau4nh3kj"><span class="s_website_form_label_content">Your Name</span><span class="s_website_form_mark"> *</span></label><div class="col-sm"><input type="text" class="form-control s_website_form_input" name="name" required="1" data-fill-with="name" id="oi8lau4nh3kj"/></div></div></div><div class="form-group s_website_form_field col-12 s_website_form_custom   " data-type="tel" data-name="Field"><div class="row s_col_no_resize s_col_no_bgcolor"><label class="col-form-label col-sm-auto s_website_form_label " style="width: 200px" for="oa3ropah0y"><span class="s_website_form_label_content">Phone Number</span></label><div class="col-sm"><input type="tel" class="form-control s_website_form_input" name="phone" data-fill-with="phone" id="oa3ropah0y"/></div></div></div><div class="form-group s_website_form_field col-12  s_website_form_model_required  " data-type="email" data-name="Field"><div class="row s_col_no_resize s_col_no_bgcolor"><label class="col-form-label col-sm-auto s_website_form_label " style="width: 200px" for="odyoeb28t83r"><span class="s_website_form_label_content">Your Email</span><span class="s_website_form_mark"> *</span></label><div class="col-sm"><input type="email" class="form-control s_website_form_input" name="email_from" required="true" data-fill-with="email" id="odyoeb28t83r"/></div></div></div><div class="form-group s_website_form_field col-12 s_website_form_custom   " data-type="char" data-name="Field"><div class="row s_col_no_resize s_col_no_bgcolor"><label class="col-form-label col-sm-auto s_website_form_label " style="width: 200px" for="ozfi3ta5meok"><span class="s_website_form_label_content">Your Company</span></label><div class="col-sm"><input type="text" class="form-control s_website_form_input" name="company" data-fill-with="commercial_company_name" id="ozfi3ta5meok"/></div></div></div><div class="form-group s_website_form_field col-12  s_website_form_model_required  " data-type="char" data-name="Field"><div class="row s_col_no_resize s_col_no_bgcolor"><label class="col-form-label col-sm-auto s_website_form_label " style="width: 200px" for="o26247wc57b2"><span class="s_website_form_label_content">Subject</span><span class="s_website_form_mark"> *</span></label><div class="col-sm"><input type="text" class="form-control s_website_form_input" name="subject" required="true" id="o26247wc57b2"/></div></div></div><div class="form-group s_website_form_field col-12 s_website_form_custom s_website_form_required  " data-type="text" data-name="Field"><div class="row s_col_no_resize s_col_no_bgcolor"><label class="col-form-label col-sm-auto s_website_form_label " style="width: 200px" for="o97pytt1rebp"><span class="s_website_form_label_content">Your Question</span><span class="s_website_form_mark"> *</span></label><div class="col-sm"><textarea class="form-control s_website_form_input" name="description" required="1" id="o97pytt1rebp" rows="3"/></div></div></div><div class="form-group col-12 s_website_form_submit" data-name="Submit Button"><div style="width: 200px;" class="s_website_form_label"/><a href="#" role="button" class="s_website_form_send btn btn-primary btn-lg" data-original-title="" title="">Submit</a><span id="s_website_form_result"/></div></div></form>
+        </div>
+                  </section>
+                  <section class="s_text_block" style="background-image: none;" data-name="Text">
+                    <div class="s_allow_columns container">
+                      <p>
+                        <br/>
+                      </p>
+                    </div>
+                  </section>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="nav_tabs_content_1662991616499_23" role="tabpanel" aria-labelledby="nav_tabs_link_1662991616499_23">
+                <div class="oe_structure oe_empty">
+                  <section class="s_text_block" style="background-image: none;" data-name="Text">
+                    <div class="container s_allow_columns">
+                      <p class="o_default_snippet_text">To be successful your content needs to be useful to your readers.</p>
+                    </div>
+                  </section>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="nav_tabs_content_1662991616499_24" role="tabpanel" aria-labelledby="nav_tabs_link_1662991616499_24">
+                <div class="oe_structure oe_empty">
+                  <section class="s_text_block" style="background-image: none;" data-name="Text">
+                    <div class="container s_allow_columns">
+                      <p class="o_default_snippet_text">Start with the customer – find out what they want and give it to them.</p>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+<!--            <div id="wrap">-->
+<!--                <div class="container">-->
+<!--                    <div class="col-md-12">-->
+<!--&lt;!&ndash;                        <form action="/nova/form/submit">&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash;                         #url/controller to called on the form action.&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <label for="name">Name:</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <input type="text" class="form-control" name="name" id="name" required="true"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                                &lt;!&ndash;                          #label and id of the fields to be created in the form.These fields                 should be present in the model for the entry of the data into the database.#          &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <label for="email">Email address:</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <input type="email" class="form-control" name="email"&ndash;&gt;-->
+<!--&lt;!&ndash;                                       id="email" required="true"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <label for="name">Phone:</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <input type="text" class="form-control" name="phone"&ndash;&gt;-->
+<!--&lt;!&ndash;                                       id="phone" required="true"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <button type="submit" class="btn btn-primary">Create</button>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </form>&ndash;&gt;-->
+<!--                        <form action="/ukraine/form/submit" method="post">-->
+<!--                            <div class="form-row" style="margin-top: 2%;">-->
+<!--                                <div class="col">-->
+<!--                                    <label class="s_website_form_label " style="width: 200px" for="o224uzzgh0qn">-->
+<!--                              <span class="s_website_form_label_content">Sender Phone Number</span>-->
+<!--                              <span class="s_website_form_mark"> *</span>-->
+<!--                            </label>-->
+<!--                                    <input type="text" class="form-control" name='sender_name' id='sender_name' placeholder=""/>-->
+<!--                                </div>-->
+<!--                                <div class="col">-->
+<!--                                    <label class="s_website_form_label " style="width: 200px" for="o224uzzgh0qn">-->
+<!--                              <span class="s_website_form_label_content">Sender Phone Number</span>-->
+<!--                              <span class="s_website_form_mark"> *</span>-->
+<!--                            </label>-->
+<!--                                    <input type="text" class="form-control" name='sender_phone' id='sender_phone' placeholder=""/>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="form-row" style="margin-top: 2%;">-->
+<!--                                <div class="col">-->
+<!--                                    <label class="s_website_form_label " style="width: 200px" for="o224uzzgh0qn">-->
+<!--                              <span class="s_website_form_label_content">Sender Email</span>-->
+<!--                              <span class="s_website_form_mark"> *</span>-->
+<!--                            </label>-->
+<!--                                    <input type="email" class="form-control" name="email"-->
+<!--                                           id="email" required="true" />-->
+<!--                                </div>-->
+<!--                                <div class="col">-->
+<!--                                    <label class="s_website_form_label " style="width: 200px" for="o224uzzgh0qn">-->
+<!--                              <span class="s_website_form_label_content">Sending From</span>-->
+<!--                              <span class="s_website_form_mark"> *</span>-->
+<!--                            </label>-->
+<!--                                    <input type="text" class="form-control" name='sending_from' id='sending_from'/>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="form-row" style="margin-top: 2%;">-->
+<!--                                <div class="col">-->
+<!--                                    <label class="s_website_form_label " style="width: 200px" for="o224uzzgh0qn">-->
+<!--                              <span class="s_website_form_label_content">Sending To</span>-->
+<!--                              <span class="s_website_form_mark"> *</span>-->
+<!--                            </label>-->
+<!--                                    <input type="text" class="form-control" name='sending_to' id='sending_to'/>-->
+<!--                                </div>-->
+
+<!--                            </div>-->
+<!--                            <div class="form-row" style="margin-top: 2%;">-->
+<!--                                <div class="col">-->
+<!--                                    <label class="s_website_form_label " style="width: 200px" for="o224uzzgh0qn">-->
+<!--                              <span class="s_website_form_label_content">Receiver Full Name</span>-->
+<!--                              <span class="s_website_form_mark"> *</span>-->
+<!--                            </label>-->
+<!--                                    <input type="text" class="form-control" name='receiver_name' id='receiver_name'/>-->
+<!--                                </div>-->
+<!--                                <div class="col">-->
+<!--                                    <label class="s_website_form_label " style="width: 200px" for="o224uzzgh0qn">-->
+<!--                              <span class="s_website_form_label_content">Receiver Phone Number</span>-->
+<!--                              <span class="s_website_form_mark"> *</span>-->
+<!--                            </label>-->
+<!--                                    <input type="text" class="form-control" name='receiver_phone' id='receiver_name'/>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="form-row" style="margin-top: 2%;">-->
+<!--                                <div class="col">-->
+<!--                                    <label class="s_website_form_label " style="width: 200px" for="o224uzzgh0qn">-->
+<!--                              <span class="s_website_form_label_content">Receiver Email</span>-->
+<!--                              <span class="s_website_form_mark"> *</span>-->
+<!--                            </label>-->
+<!--                                    <input type="email" class="form-control" name="receiver_email"-->
+<!--                                           id="receiver_email" required="true"/>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="form-row" style="margin-top: 2%;">-->
+<!--                                <div class="col">-->
+<!--                                    <label class="s_website_form_label " style="width: 200px" for="o224uzzgh0qn">-->
+<!--                              <span class="s_website_form_label_content">Freight Description</span>-->
+<!--                              <span class="s_website_form_mark"> *</span>-->
+<!--                            </label>-->
+<!--                                    <input type="text" class="form-control" name='freight_description' id='freight_description'/>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="form-row" style="margin-top: 2%;">-->
+<!--                                <div class="col">-->
+<!--                                      <label class="s_website_form_label " style="width: 200px" for="o224uzzgh0qn">-->
+<!--                              <span class="s_website_form_label_content">Box Lenght (cm)</span>-->
+<!--                              <span class="s_website_form_mark"> *</span>-->
+<!--                            </label>-->
+<!--                                    <input type="number" class="form-control" name='box_len' id='box_len'/>-->
+<!--                                </div>-->
+<!--                                <div class="col">-->
+<!--                                      <label class="s_website_form_label " style="width: 200px" for="o224uzzgh0qn">-->
+<!--                              <span class="s_website_form_label_content">Box Width (cm)</span>-->
+<!--                              <span class="s_website_form_mark"> *</span>-->
+<!--                            </label>-->
+<!--                                    <input type="number" class="form-control" name='box_width' id='box_width'/>-->
+<!--                                </div>-->
+<!--                                <div class="col">-->
+<!--                                      <label class="s_website_form_label " style="width: 200px" for="o224uzzgh0qn">-->
+<!--                              <span class="s_website_form_label_content">Box Hight (cm)</span>-->
+<!--                              <span class="s_website_form_mark"> *</span>-->
+<!--                            </label>-->
+<!--                                    <input type="number" class="form-control" name='box_height' id='box_height'/>-->
+<!--                                </div>-->
+<!--                                <div class="col">-->
+<!--                                      <label class="s_website_form_label " style="width: 200px" for="o224uzzgh0qn">-->
+<!--                              <span class="s_website_form_label_content">Box Weight (kg)</span>-->
+<!--                              <span class="s_website_form_mark"> *</span>-->
+<!--                            </label>-->
+<!--                                    <input type="number" class="form-control" name='box_weight' id='box_weight'/>-->
+<!--                                </div>-->
+<!--                            </div>-->
+
+<!--                            <div class="form-row" style="margin-top: 2%;">-->
+<!--                                <div class="col">-->
+<!--                                    <button type="submit" class="btn btn-primary">Create Shipment Label</button>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </form>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+        </t>
+    </template>
+</odoo>

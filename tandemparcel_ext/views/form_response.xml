@@ -1,0 +1,17 @@
+<odoo>
+<template id="tmp_nova_form_response" name="Customer Form Successfully Submitted">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="container" style="margin-top: 5%; margin-bottom: 5%;">
+                    <div class="col-md-12">
+                        <div class="alert alert-success">
+                            <t t-esc="status_text"/>
+                            <br></br>
+                            <t t-esc="date_text"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

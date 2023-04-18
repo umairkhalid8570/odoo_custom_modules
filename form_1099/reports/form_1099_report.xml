@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <report
+            id="form_1099_print_report"
+            string="Print Report"
+            model="accounting.form.1099"
+            report_type="qweb-html"
+            name="form_1099.form_1099_report"
+            file="form_1099.form_1099_report"
+            print_report_name="'Print Form 1099 - %s' % (object.division_id.name).replace('/', '')"
+
+    />
+
+    <template id="form_1099_report">
+        <t t-call="web.basic_layout">
+            <div class="page">
+                <t t-foreach="docs" t-as="o">
+                    <div class="col-md-6">
+
+                        <table>
+                            <td>
+                                <table style="width: 590pt">
+                                    <tr>
+                                        <td colspan="3" align="left" valign="left">
+                                            <span style="color: red;font-family: Tahoma;">
+                                                <t t-esc="o.division_id.name"/>
+                                            </span>
+                                            <span style="color: red; display: block; margin-bottom: -1.6mm;"></span>
+                                            <span style="color: red; font-family: Tahoma;">
+                                                <t t-esc="o.division_id.x_street_1"/>
+                                            </span>
+                                            <span style="color: red; display: block; margin-bottom: -1.6mm;"></span>
+                                            <span style="color: red; font-family: Tahoma;"><t
+                                                    t-esc="o.division_id.x_city"/>,
+                                                <t t-esc="o.division_id.x_state"/>
+                                                <t t-esc="o.division_id.x_zip"/>
+                                            </span>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" align="left" valign="left">
+                                            <span style="color: red; display: block; margin-left:151.8mm; margin-top:-0.3mm;">
+                                                22
+                                            </span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <!--<td style="width:5%"/>-->
+
+                                        <td colspan="3" align="left" valign="left"
+                                            style=" width: 50.5%; height: 26.3mm;">
+                                            <span style="color: red; display: inline-block; margin-left:50mm; margin-top:3.8mm;">
+                                                <t t-esc="o.partner_filter_id.ean_number"/>
+                                            </span>
+                                            <span style="color: red; display: inline-block; margin-left: 69.5mm;">
+                                                <t t-esc="o.total_amount"/>
+                                            </span>
+                                            <!--                                            <span>	51,032.55</span>-->
+                                        </td>
+                                    </tr>
+                                    <tr height="40px">
+                                        <td colspan="3" align="left" valign="left">
+                                            <span style="display: block; margin-top:-9mm; color: red;">
+                                                <t t-esc="o.partner_filter_id.name"/>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr height="35px">
+                                        <td colspan="3" align="left" valign="left">
+                                            <span style="display: block; margin-top:-8.1mm; color: red;">
+                                                <t t-esc="o.partner_filter_id.street"/>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr height="33px">
+                                        <td colspan="3" align="left" valign="left">
+                                            <span style="display: block; margin-top:-8.1mm; color: red;"><t
+                                                    t-esc="o.partner_filter_id.city"/>,<t
+                                                    t-esc="o.partner_filter_id.state_id.name"/>,
+                                                <t t-esc="o.partner_filter_id.zip"/>
+                                            </span>
+                                            <!--&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;<span style="margin-left:40%; color: red;">	0.00</span>-->
+                                        </td>
+
+                                    </tr>
+                                    <!-- <tr>-->
+                                    <!--    <td style="width:50%"/>-->
+                                    <!--    <td align="center" valign="center">-->
+                                    <!--        <span>	0.00</span>-->
+                                    <!--    </td>-->
+                                    <!--    <td align="center" valign="center">-->
+                                    <!--        <span>	0.00</span>-->
+                                    <!--    </td>-->
+                                    <!--</tr>-->
+                                    <!--<tr>-->
+                                    <!--    <td style="width:50%"/>-->
+                                    <!--    <td align="center" valign="center">-->
+                                    <!--        <span>	0.00</span>-->
+                                    <!--    </td>-->
+                                    <!--    <td align="center" valign="center">-->
+                                    <!--        <span>	0.00</span>-->
+                                    <!--    </td>-->
+                                    <!--</tr>-->
+
+
+                                </table>
+                                <span style="display: block; margin-top:37mm;color: red;"></span>
+                            </td>
+
+                        </table>
+                    </div>
+                </t>
+            </div>
+        </t>
+    </template>
+</odoo>

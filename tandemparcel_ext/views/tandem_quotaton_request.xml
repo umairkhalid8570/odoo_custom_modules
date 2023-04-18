@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--<act_window name="Create Trip"-->
+    <!--id="create_trip_action"-->
+    <!--res_model="tms.trip"-->
+    <!--src_model="tms.load"-->
+    <!--view_mode="form"-->
+    <!--target="new"-->
+    <!--key2="client_action_multi"-->
+    <!--/>-->
+    <!--
+        key2="client_action_relate"
+        context="{
+        'default_res_id': context.get('active_id'),
+        }"
+    -->
+
+    <record id='tandem_quotaion_request_view_tree' model='ir.ui.view'>
+        <field name="name">tandem.quotaion.request.tree</field>
+        <field name="model">tandem.quotation.request</field>
+        <field name="arch" type="xml">
+            <tree string="Tandem Request">
+                <field name="sender_name"/>
+                <field name="sender_phone"/>
+                <field name="email"/>
+                <field name="sending_from"/>
+                <field name="sending_to"/>
+                <field name="receiver_name"/>
+                <field name="receiver_phone"/>
+                <field name="receiver_email"/>
+                <field name="freight_description"/>
+                <field name="product_price"/>
+                <field name="box_len"/>
+                <field name="box_width"/>
+                <field name="box_height"/>
+                <field name="box_weight"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="tandem_quotaion_request_view_form" model="ir.ui.view">
+        <field name="name">tandem.quotaion.request.form</field>
+        <field name="model">tandem.quotation.request</field>
+        <field name="arch" type="xml">
+            <form string="Trip State">
+                <header>
+                    <field name="state" widget="statusbar" options="{'clickable': False}"/>
+                    <button
+                            name="send_to_nova" type="object" string="Send Request to Nova server"
+                            attrs="{'invisible': ['|', ('state', 'in', ['cancel', 'processed']), ('ew_id', '!=', False)]}"/>
+                    <button
+                            name="cancel_record" type="object" string="Cancel Request"
+                            attrs="{'invisible': ['|', ('state', 'in', ['cancel', 'processed']), ('ew_id', '!=', False)]}"/>
+                    <button
+                            name="local_delivery" type="object" string="Local Delivery"
+                            />
+<!--                    <button-->
+<!--                            name="print_tag" type="object" string="Print Tag"-->
+<!--                            attrs="{'invisible': [('ew_id', '=', False)]}"/>-->
+
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="sender_name"/>
+                            <field name="sender_phone"/>
+                            <field name="email"/>
+                            <field name="sending_from"/>
+                            <!--<field name="mail_template_id"/>-->
+                        </group>
+                        <group>
+                            <field name="sending_from"/>
+                            <field name="sending_to"/>
+                            <field name="receiver_name"/>
+                            <field name="receiver_phone"/>
+                            <field name="receiver_email"/>
+                            <field name="freight_description"/>
+                        </group>
+
+                        <group>
+                            <field name="product_price"/>
+                            <field name="box_len"/>
+                            <field name="box_width"/>
+                            <field name="box_height"/>
+                            <field name="box_weight"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="parcel_transfer_expense"/>
+                            <field name="parcel_rate"/>
+                            <field name="profit"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group name="Server Response">
+                            <field name="ew_id" readonly="1" force_save="1"/>
+                            <field name="state_id" readonly="1" force_save="1"/>
+                            <field name="filedata" widget="binary" readonly="1" force_save="1"/>
+                        </group>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_tandem_quotaion_request" model="ir.actions.act_window">
+        <field name="name">Tandem Quotaion Request</field>
+        <field name="res_model">tandem.quotation.request</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('city', '=', 'ukraine')]</field>
+    </record>
+    <record id="action_tandem_quotaion_request_georgia" model="ir.actions.act_window">
+        <field name="name">Tandem Quotaion Request</field>
+        <field name="res_model">tandem.quotation.request</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('city', '=', 'georgia')]</field>
+    </record>
+    <menuitem id="menu_tandem_qoutaion_root" name="Tandem"/>
+
+    <menuitem id="menu_tandem_qoutation_request" name="Tandem Quotation Request"
+              parent="menu_tandem_qoutaion_root"
+    />
+    <menuitem id="menu_tandem_qoutation_request_ukraine" name="Tandem Quotation Request (Ukraine)"
+              parent="menu_tandem_qoutation_request"
+              action="action_tandem_quotaion_request"
+    />
+    <menuitem id="menu_tandem_qoutation_request_georgia" name="Tandem Quotation Request (Georgia)"
+              parent="menu_tandem_qoutation_request"
+              action="action_tandem_quotaion_request_georgia"
+    />
+
+    <record id='nova_warehouse_view_tree' model='ir.ui.view'>
+        <field name="name">nova.warehouse.tree</field>
+        <field name="model">nova.warehouse</field>
+        <field name="arch" type="xml">
+            <tree string="Nova Warehouse list" editable='bottom' edit="0" create="0" delete="0">
+                <field name="name"/>
+                <field name="warehouse_city"/>
+            </tree>
+        </field>
+    </record>
+    <record id='nova_warehouse_view_form' model='ir.ui.view'>
+        <field name="name">nova.warehouse.form</field>
+        <field name="model">nova.warehouse</field>
+        <field name="arch" type="xml">
+            <form string="Nova Warehouse list" edit="0" create="0" delete="0">
+                <group>
+                    <group>
+                        <field name="name"/>
+                        <field name="warehouse_city"/>
+                    </group>
+                </group>
+            </form>
+
+        </field>
+    </record>
+
+    <record id="action_nova_warehouse" model="ir.actions.act_window">
+        <field name="name">Nova Warehouse list</field>
+        <field name="res_model">nova.warehouse</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+    </record>
+
+</odoo>
